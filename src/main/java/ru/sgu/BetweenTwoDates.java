@@ -9,22 +9,55 @@ class BetweenTwoDates
     LocalDate firstDate, secondDate;
 
     {
-        firstDate = this.takeDate();
-        secondDate = this.takeDate();
+        firstDate = this.readDate();
+        secondDate = this.readDate();
     }
-    LocalDate takeDate()
+
+    LocalDate readDate()
     {
         System.out.println("Введите через пробел год, месяц и день");
         Scanner scanner = new Scanner(System.in);
         LocalDate date;
+        int year, month, day;
         try
         {
-            date = LocalDate.of(scanner.nextInt(), scanner.nextInt(), scanner.nextInt());
+            year = scanner.nextInt();
+            if (year < 1)
+                throw new ArithmeticException();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Введён некорректный год");
+        }
+        try
+        {
+            month = scanner.nextInt();
+            if (month < 1 || month > 12)
+                throw new ArithmeticException();
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Введён некорректный месяц");
+        }
+        try
+        {
+            day = scanner.nextInt();
+            if (day < 1 || day > 31)
+                throw new RuntimeException("Введён некорректный день");
+        }
+        catch (Exception e)
+        {
+            throw new RuntimeException("Введён некорректный день");
+        }
+        try
+        {
+            date = LocalDate.of(year, month, day);
         }
         catch (Exception e)
         {
             throw new RuntimeException("Введена некорректная дата");
         }
+        scanner.close();
         return date;
     }
     long daysBetween()
@@ -42,5 +75,3 @@ class BetweenTwoDates
 
     }
 }
-
-
