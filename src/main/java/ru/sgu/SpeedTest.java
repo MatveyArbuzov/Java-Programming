@@ -4,7 +4,6 @@ import java.util.Random;
 
 class SpeedTest
 {
-    long time;
     String genString()
     {
         byte[] bytes = new byte[10];
@@ -13,40 +12,53 @@ class SpeedTest
             bytes[i] = (byte)(rn.nextInt(94) + 33);
         return new String(bytes);
     }
-    void SpeedString()
+
+    void execWithString()
     {
-        time = System.currentTimeMillis();
         String str = "";
         for (int i = 0; i < 100_000; i++)
             str = str + genString();
-        time = System.currentTimeMillis() - time;
-        System.out.println("Время работы программы при использовании String: " + time + "ms");
     }
-    void SpeedStringBuilder()
+
+    void execWithStringBuilder()
     {
-        time = System.currentTimeMillis();
         StringBuilder strBuild = new StringBuilder();
         for (int i = 0; i < 100_000; i++)
             strBuild.append(genString());
-        time = System.currentTimeMillis() - time;
-        System.out.println("Время работы программы при использовании StringBuilder: " + time + "ms");
     }
-    void SpeedStringBuffer()
+
+    void execWithStringBuffer()
     {
-        time = System.currentTimeMillis();
         StringBuffer strBuf = new StringBuffer();
         for (int i = 0; i < 100_000; i++)
             strBuf.append(genString());
-        time = System.currentTimeMillis() - time;
-        System.out.println("Время работы программы при использовании StringBuffer: " + time + "ms");
+    }
+
+    long getTimeOfMethod(int i){
+        long time;
+            time = System.currentTimeMillis();
+            switch (i){
+                case 1:
+                    this.execWithString();
+                    break;
+                case 2:
+                    this.execWithStringBuilder();
+                    break;
+                case 3:
+                    this.execWithStringBuffer();
+                    break;
+            }
+            return System.currentTimeMillis() - time;
     }
 
     public static void main(String[] args)
     {
         SpeedTest object = new SpeedTest();
-        object.SpeedString();
-        object.SpeedStringBuilder();
-        object.SpeedStringBuffer();
+        System.out.println("Время работы программы при использовании String: "
+                + object.getTimeOfMethod(1) + "ms");
+        System.out.println("Время работы программы при использовании StringBuilder: "
+                + object.getTimeOfMethod(2) + "ms");
+        System.out.println("Время работы программы при использовании StringBuffer: "
+                + object.getTimeOfMethod(3) + "ms");
     }
 }
-
