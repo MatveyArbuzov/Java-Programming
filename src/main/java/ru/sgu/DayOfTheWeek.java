@@ -13,29 +13,27 @@ public class DayOfTheWeek
     Day current;
     int count;
 
-    {
-        this.readingData();
-    }
-
     void readingData(){
-        System.out.println("Введите через пробел день недели и количество дней");
         Scanner scanner = new Scanner(System.in);
-        try
-        {
-            current = Day.valueOf(scanner.next());
-            count = scanner.nextInt();
-            if (count < 0)
-                throw new ArithmeticException();
+        while(true){
+            System.out.println("Введите через пробел день недели и количество дней");
+            try
+            {
+                current = Day.valueOf(scanner.next());
+                count = scanner.nextInt();
+                if (count < 0)
+                    throw new ArithmeticException();
+                break;
+            }
+            catch (IllegalArgumentException e)
+            {
+                System.out.println("Введён некорректный день недели");
+            }
+            catch (InputMismatchException | ArithmeticException e)
+            {
+                System.out.println("Второй параметр не является корректным");
+            }
         }
-        catch (IllegalArgumentException e)
-        {
-            throw new RuntimeException("Введён некорректный день недели");
-        }
-        catch (InputMismatchException | ArithmeticException e)
-        {
-            throw new RuntimeException("Второй параметр не является корректным");
-        }
-        scanner.close();
     }
 
     Day getANewDay()
@@ -47,7 +45,8 @@ public class DayOfTheWeek
 
     public static void main(String[] args)
     {
-        DayOfTheWeek object = new DayOfTheWeek();
-        System.out.println(object.getANewDay());
+        DayOfTheWeek dayOfTheWeek = new DayOfTheWeek();
+        dayOfTheWeek.readingData();
+        System.out.println(dayOfTheWeek.getANewDay());
     }
 }
