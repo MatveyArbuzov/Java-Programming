@@ -1,10 +1,10 @@
 package main.java.ru.sgu.TaskA;
 
-public class OwnersOfStocks {
+public class StockOwner {
     String surname, name, patronymic, companyName;
     int rating;
 
-    public OwnersOfStocks(String surname, String name, String patronymic, String companyName, int rating)
+    public StockOwner(String surname, String name, String patronymic, String companyName, int rating)
     {
         this.surname = surname;
         this.name = name;
@@ -13,12 +13,12 @@ public class OwnersOfStocks {
         this.rating = rating;
     }
 
-    public OwnersOfStocks(String surname, String name, String companyName, int rating)
+    public StockOwner(String surname, String name, String companyName, int rating)
     {
         this(surname, name, "", companyName, rating);
     }
 
-    public OwnersOfStocks(String surname, String companyName, int rating)
+    public StockOwner(String surname, String companyName, int rating)
     {
         this(surname, "", "", companyName, rating);
     }
@@ -36,6 +36,11 @@ public class OwnersOfStocks {
     public String getPatronymic()
     {
         return patronymic;
+    }
+
+    public String getCompanyName()
+    {
+        return companyName;
     }
 
     public int getRating()
