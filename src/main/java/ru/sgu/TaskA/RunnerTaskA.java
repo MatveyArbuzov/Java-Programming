@@ -21,20 +21,21 @@ public class RunnerTaskA
             try
             {
                 scanner = new Scanner(new File(fileName));
-                Set<String> result = new LinkedHashSet<String>();
-                while (scanner.hasNextLine())
-                    result.add(scanner.nextLine());
-                if (result.isEmpty())
-                    printError("Указанный файл пуст");
-                else
-                {
-                    scanner.close();
-                    return result;
-                }
             }
             catch (FileNotFoundException ex)
             {
                 printError("Указанный файл необходимо добавить в проект");
+                continue;
+            }
+            Set<String> result = new LinkedHashSet<String>();
+            while (scanner.hasNextLine())
+                result.add(scanner.nextLine());
+            if (result.isEmpty())
+               printError("Указанный файл пуст");
+            else
+            {
+                scanner.close();
+                return result;
             }
         }
     }
@@ -96,11 +97,7 @@ public class RunnerTaskA
     {
         System.out.println("\nРезультат сортировки:");
         for (StockOwner stockOwner : sortedStrings)
-            System.out.println(stockOwner.surname
-                    + " " + stockOwner.name
-                    + " " + stockOwner.patronymic
-                    + " " + stockOwner.companyName
-                    + " " + stockOwner.rating);
+            System.out.println(stockOwner.toString());
     }
 
     public static void main(String[] args)
