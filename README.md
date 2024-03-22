@@ -12,53 +12,60 @@ A. Дана таблица employeesAge
 
     2 Катя 25
 
+
 Необходимо вывести всех сотрудников, чей возраст больше 20.
 
 
 B. Дана таблица departmentSalary
 
-id employeeName departmentName salary
+    id employeeName departmentName salary
 
-0 Кирилл IT 30000
+    0 Кирилл IT 30000
 
-1 Иван IT 20000
+    1 Иван IT 20000
 
-2 Маша HR 40000
+    2 Маша HR 40000
 
 
 Необходимо вывести среднюю зарплату по каждому отделу.
 
 Пример:
 
-departmentName averageSalary
+    departmentName averageSalary
 
-IT 25000
+    IT 25000
 
-HR 40000
+    HR 40000
 
 
 C. Даны таблицы departmentEmployee
 
-id employeeName departmentId
+    id employeeName departmentId
 
-0 Кирилл 1
+    0 Кирилл 1
 
-1 Иван 1
+    1 Иван 1
 
-2 Маша 2
+    2 Маша 2
 
 
 и departmentLocation
 
-departmentId departmentName location
+    departmentId departmentName location
 
-1 IT Саратов
+    1 IT Саратов
 
-2 HR Москва
+    2 HR Москва
 
 
 Для каждого сотрудника необходимо вывести имя его департамента и локацию работы.
-employeeName departmentName location
-Кирилл IT Саратов
-Иван IT Калифорния
-Маша HR Москва
+
+Пример:
+
+    employeeName departmentName location
+    
+    Кирилл IT Саратов
+    
+    Иван IT Калифорния
+    
+    Маша HR Москва
