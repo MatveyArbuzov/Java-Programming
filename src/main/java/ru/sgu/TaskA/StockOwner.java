@@ -47,4 +47,13 @@ public class StockOwner {
     {
         return rating;
     }
+
+    @Override
+    public String toString() {
+        return this.surname
+                + " " + this.name
+                + " " + this.patronymic
+                + " " + this.companyName
+                + " " + this.rating;
+    }
 }
